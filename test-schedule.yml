@@ -1,0 +1,4 @@
+test1:
+    type: ping
+    conf:
+        addr: 8.8.8.8
