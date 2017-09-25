@@ -1,5 +1,4 @@
 test1:
     type: ping
-    schedule: * * * * *
     conf:
         addr: 8.8.8.8

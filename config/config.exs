@@ -34,5 +34,5 @@ config :hammam, Hammam.Scheduler,
     {"* * * * *", fn -> IO.puts "Wesh" end},
   ]
 
-config :scheduler_yaml,
-  schedule_file: "test-schedule.yaml"
+config :hammam,
+   source_type: "yaml"
