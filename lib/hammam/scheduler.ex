@@ -12,8 +12,17 @@ defmodule Hammam.Scheduler do
     Logger.info  "Schedule Job: #{job.id}"
     Hammam.Scheduler.new_job()
       |> Quantum.Job.set_schedule(Crontab.CronExpression.Parser.parse!(job.schedule, true))
-      |> Quantum.Job.set_task(fn -> Hammam.Job.run(job) end)
+      |> Quantum.Job.set_task(fn -> job_task(job) end)
       |> Hammam.Scheduler.add_job()
   end
 
+  def job_task(job) do
+    {:ok, metrics} = Hammam.Job.run(job)
+    check = %Hammam.Check{
+      type: job.type,
+      metrics: metrics,
+      job_id: job.id
+    }
+    Hammam.Metric.send(check)
+  end
 end

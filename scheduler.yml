@@ -3,3 +3,9 @@ test1:
     schedule: "* * * * *"
     conf:
         addr: 8.8.8.8
+
+test_local:
+    type: ping
+    schedule: "* * * * *"
+    conf:
+        addr: 127.0.0.1

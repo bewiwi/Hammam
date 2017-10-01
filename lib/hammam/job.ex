@@ -12,7 +12,7 @@ defmodule Hammam.Job do
   def run(job) do
     Logger.debug("Run job #{job.id}")
     case get_module(job.type).start(job.conf) do
-      {:ok, results} -> Logger.debug(results.keys)
+      {:ok, metrics} -> {:ok, metrics}
       {:error, message} -> Logger.error("Check #{job.id} fail : #{message}")
       _ -> Logger.error("Check wrong return format")
     end

@@ -17,7 +17,7 @@ defmodule Hammam.Check.Ping do
       {:error, reason} -> {:error, reason}
       [result|_] ->  case result do
           {:ok,_,_,_, detail,_} ->{:ok, %{
-            "elapsed": elem(detail, 2)
+            "elapsed": elem(detail, 3),
           }}
           _ -> {:error, "Undetermined reason"}
         end

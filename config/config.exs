@@ -29,10 +29,8 @@ use Mix.Config
 #
 #     import_config "#{Mix.env}.exs"
 config :hammam, Hammam.Scheduler,
-  global: true,
-  jobs: [
-    {"* * * * *", fn -> IO.puts "Wesh" end},
-  ]
+  global: true
 
 config :hammam,
-   source_type: "yaml"
+  source_type: "yaml",
+  metric_type: "stdout"
