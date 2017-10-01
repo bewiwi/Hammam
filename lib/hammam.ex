@@ -12,14 +12,7 @@ defmodule Hammam.Application do
 
     opts = [strategy: :one_for_one, name: Hammam.Supervisor]
     process = Supervisor.start_link(children, opts)
-
-#    Hammam.Scheduler.new_job()
-#      |> Quantum.Job.set_name(:wesh)
-#      |> Quantum.Job.set_schedule(Crontab.CronExpression.Parser.parse!("* * * * * *", true))
-#      |> Quantum.Job.set_task(fn -> IO.puts "COUCOU--BISSS" end)
-#      |> Hammam.Scheduler.add_job()
-# 
-
+    Hammam.Scheduler.run_schedule()
     process
   end
 end
